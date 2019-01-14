@@ -21,9 +21,5 @@ function with_closure() {
     }
 }
 
-async function doInOrder() {
-    await without_closure()
-    with_closure()
-}
 without_closure()
 setTimeout(with_closure, 6000)
