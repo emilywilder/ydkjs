@@ -8,6 +8,13 @@ myObject = {
     }
 };
 
+function checkProperties() {
+    ["a", "b"].forEach(function(x) {
+        console.log(`myObject has property ${x}?: ` + myObject.hasOwnProperty(x));
+    })
+}
+
+checkProperties();
 
 console.log("Setting a to 2...")
 myObject.a = 2;
@@ -26,6 +33,8 @@ Object.defineProperty(
         enumerable: true
     }
 );
+
+checkProperties();
 
 console.log("Getting b...")
 console.log(myObject.b);
