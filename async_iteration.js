@@ -17,14 +17,11 @@ async function async_iteration() {
 
     // indices
     async function indices() {
-        return new Promise(async resolve => {
-            process.stdout.write("Using indices:");
-            for (let i = 0; i < myArray.length; i++) {
-                await delay();
-                process.stdout.write(` ${myArray[i]}`);
-            }
-            resolve();
-        });
+        process.stdout.write("Using indices:");
+        for (let i = 0; i < myArray.length; i++) {
+            await delay();
+            process.stdout.write(` ${myArray[i]}`);
+        }
     }
 
     await indices();
@@ -32,14 +29,11 @@ async function async_iteration() {
 
     // for..in
     async function forin() {
-        return new Promise(async resolve => {
-            process.stdout.write("Using for..in:");
-            for (var p in myArray) {
-                await delay();
-                process.stdout.write(` ${myArray[p]}`);
-            }
-            resolve();
-        });
+        process.stdout.write("Using for..in:");
+        for (var p in myArray) {
+            await delay();
+            process.stdout.write(` ${myArray[p]}`);
+        }
     }
 
     await forin();
@@ -47,14 +41,11 @@ async function async_iteration() {
 
     // for..of
     async function forof() {
-        return new Promise(async resolve => {
-            process.stdout.write("Using for..of:");
-            for (var x of myArray) {
-                await delay();
-                process.stdout.write(` ${x}`);
-            }
-            resolve();
-        })
+        process.stdout.write("Using for..of:");
+        for (var x of myArray) {
+            await delay();
+            process.stdout.write(` ${x}`);
+        }
     }
 
     await forof();
