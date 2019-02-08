@@ -1,4 +1,5 @@
 function delay() {
+    // need to wrap in a promise, since setTimeout isn't async capable
     return new Promise(resolve => {
         return setTimeout(resolve, Math.random() * 1000);
     });
