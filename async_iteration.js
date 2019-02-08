@@ -30,7 +30,7 @@ async function async_iteration() {
     // for..in
     async function forin() {
         process.stdout.write("Using for..in:");
-        for (var p in myArray) {
+        for (const p in myArray) {
             await delay();
             process.stdout.write(` ${myArray[p]}`);
         }
@@ -42,7 +42,7 @@ async function async_iteration() {
     // for..of
     async function forof() {
         process.stdout.write("Using for..of:");
-        for (var x of myArray) {
+        for (const x of myArray) {
             await delay();
             process.stdout.write(` ${x}`);
         }
