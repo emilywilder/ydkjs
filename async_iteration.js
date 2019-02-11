@@ -1,7 +1,10 @@
-function delay() {
+function delayedWrite(message) {
     // need to wrap in a promise, since setTimeout isn't async capable
     return new Promise(resolve => {
-        return setTimeout(resolve, Math.random() * 1000);
+        return setTimeout(function() {
+            process.stdout.write(message);
+            resolve();
+        }, Math.random() * 1000);
     });
 }
 
@@ -20,8 +23,7 @@ async function async_iteration() {
     async function indices() {
         process.stdout.write("Using indices:");
         for (let i = 0; i < myArray.length; i++) {
-            await delay();
-            process.stdout.write(` ${myArray[i]}`);
+            await delayedWrite(` ${myArray[i]}`);
         }
     }
 
@@ -32,8 +34,7 @@ async function async_iteration() {
     async function forin() {
         process.stdout.write("Using for..in:");
         for (const p in myArray) {
-            await delay();
-            process.stdout.write(` ${myArray[p]}`);
+            await delayedWrite(` ${myArray[p]}`);
         }
     }
 
@@ -44,8 +45,7 @@ async function async_iteration() {
     async function forof() {
         process.stdout.write("Using for..of:");
         for (const x of myArray) {
-            await delay();
-            process.stdout.write(` ${x}`);
+            await delayedWrite(` ${x}`);
         }
     }
 
