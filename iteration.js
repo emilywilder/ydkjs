@@ -73,7 +73,7 @@ do {
 console.log();
 
 // custom iterator
-process.stdout.write("Using a custom iterator:");
+console.log("Using a custom iterator:");
 Object.defineProperty( myObject, Symbol.iterator, {
     enumerable: false,
     writable: false,
@@ -94,9 +94,18 @@ Object.defineProperty( myObject, Symbol.iterator, {
     }
 );
 
+process.stdout.write("\t(manual) ");
 var it = myObject[Symbol.iterator]();
 do {
     var x = it.next();
     process.stdout.write(` ${x.value}`);
 } while (!x.done);
+
+console.log();
+
+process.stdout.write("\t(for..of) ");
+for (var x of myObject) {
+    process.stdout.write(` ${x}`);
+}
+
 console.log();
