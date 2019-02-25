@@ -57,3 +57,12 @@ for (var x of myArray) {
     process.stdout.write(` ${x}`);
 }
 console.log();
+
+// using an iterator
+process.stdout.write("Using an iterator:");
+var it = myArray[Symbol.iterator]();
+do {
+    var x = it.next();
+    process.stdout.write(` ${x.value}`);
+} while (!x.done);
+console.log();
