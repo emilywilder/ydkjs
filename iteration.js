@@ -4,6 +4,11 @@ function isOdd(x) {
 
 console.log("Creating array...")
 var myArray = [1,2,3];
+var myObject = {
+    a: 1,
+    b: 2,
+    c: 3
+};
 
 console.log("Adding enumerable property to array...")
 Object.defineProperty(
@@ -61,6 +66,35 @@ console.log();
 // using an iterator
 process.stdout.write("Using an iterator:");
 var it = myArray[Symbol.iterator]();
+do {
+    var x = it.next();
+    process.stdout.write(` ${x.value}`);
+} while (!x.done);
+console.log();
+
+// custom iterator
+process.stdout.write("Using a custom iterator:");
+Object.defineProperty( myObject, Symbol.iterator, {
+    enumerable: false,
+    writable: false,
+    configurable: true,
+    value: function () {
+        var o = this;
+        var idx = 0;
+        var keys = Object.keys( o );
+        return {
+            next: function() {
+                return {
+                    value: o[keys[idx++]],
+                    done: (idx > keys.length)
+                }
+            }
+        }
+    }
+    }
+);
+
+var it = myObject[Symbol.iterator]();
 do {
     var x = it.next();
     process.stdout.write(` ${x.value}`);
