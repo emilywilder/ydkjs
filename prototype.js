@@ -4,15 +4,17 @@ function log(msg) {
 
 log("creating anotherObj with property a");
 
-function printProperties() {
+function printProperties(iter=false) {
     log("Properties of anotherObject");
     console.log(Object.getOwnPropertyNames(anotherObj));
     log("Properties of myObject");
     console.log(Object.getOwnPropertyNames(myObj));
 
-    log("iterating over properties of myObj");
-    for (k in myObj) {
-        console.log("found: " + k)
+    if (iter) {
+        log("iterating over properties of myObj");
+        for (k in myObj) {
+            console.log("found: " + k)
+        }
     }
 }
 
@@ -25,7 +27,7 @@ var myObj = Object.create( anotherObj );
 log("setting property b to myObj");
 myObj.b = 2;
 
-printProperties();
+printProperties(iter=true);
 
 log("using in to check properties of myObj");
 console.log("a in myObj?: " + ("a" in myObj));
@@ -38,3 +40,23 @@ console.log("myObj.a = " + myObj.a);
 
 printProperties();
 
+log("Adding properties c to anotherObject as read-only");
+Object.defineProperty(anotherObj, "c", {
+    value: 4,
+    enumerable: true,
+    writable: false
+});
+log("Shadowing c to myObj");
+myObj.c = 5;
+
+printProperties();
+
+log("Adding property d to anotherObj");
+anotherObj.d = 5;
+
+printProperties();
+
+log("Implicit shadowing of d onto myObj through incrementing");
+myObj.d++;
+
+printProperties();
