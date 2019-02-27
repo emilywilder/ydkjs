@@ -7,7 +7,7 @@ log("creating anotherObj with property a");
 function printProperties() {
     log("Properties of anotherObject");
     console.log(Object.getOwnPropertyNames(anotherObj));
-    log("Properties of amyObject");
+    log("Properties of myObject");
     console.log(Object.getOwnPropertyNames(myObj));
 
     log("iterating over properties of myObj");
