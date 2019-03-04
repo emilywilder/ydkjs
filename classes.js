@@ -65,3 +65,9 @@ my.log("c's name: ", false);
 console.log(c.getName());
 my.log("c's age: ", false);
 console.log(c.getAge());
+
+my.log("Creating two objects, d and e, where e is created by d");
+let d = {};
+let e = Object.create(d);
+my.log("d is an ancestor of e?: ", false);
+console.log(d.isPrototypeOf(e));
